@@ -1,0 +1,22 @@
+services:
+  j-serpbear:
+    #image: towfiqi/serpbear
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    container_name: "j-serpbear"
+    ports:
+       - 3000:3000
+    environment:
+      - USER=admin
+      - PASSWORD=admin
+      - SECRET=abcdefg
+      - APIKEY=hijklmnop
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000
+    volumes:
+      - j-serpbear_appdata:/app/data
+
+volumes:
+  j-serpbear_appdata:
+
